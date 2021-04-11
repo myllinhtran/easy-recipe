@@ -108,12 +108,12 @@ function Recipe() {
 
     function handleAddedIngredient() {
         ingredientValidation();
-        const ingredientDetail = {
-            'id': ingredientId,
-            'name': ingredientName,
-            'amount': ingredientAmount,
-            'unit': ingredientUnit
-        };
+            const ingredientDetail = {
+                'id': ingredientId,
+                'name': ingredientName,
+                'amount': ingredientAmount,
+                'unit': ingredientUnit
+            };
         if (ingredientAmount !== "" && ingredientUnit !== "") {
             return setIngredientList(ingredientList => [...ingredientList, ingredientDetail]);
         }
