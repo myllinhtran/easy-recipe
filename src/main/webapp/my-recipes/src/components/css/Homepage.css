@@ -1,0 +1,24 @@
+.img {
+    align-content: center;
+}
+
+.card {
+    margin-top: 15px;
+}
+
+.card-home {
+    width: 150px;
+}
+
+.card-title {
+    font-size: 18px;
+}
+
+.col-sm {
+    font-size: 13px;
+}
+
+.btn {
+    margin: 10px;
+}
+
