@@ -16,8 +16,7 @@ function RecipeDetail() {
     });
 
     const getRecipe = (props) => {
-        const recipeId = props.match.params.id;
-        console.log(recipeId);
+
     };
 
     return (
