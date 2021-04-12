@@ -8,6 +8,11 @@ import {faDumbbell, faUtensils} from "@fortawesome/free-solid-svg-icons";
 
 function Homepage() {
 
+    const link = {
+        textDecoration: "none",
+        color: "black"
+    };
+
     // Store the recipes in a state variable.
     // We are passing an empty array as the default value.
     const [recipes, setRecipes] = useState([{
@@ -57,9 +62,9 @@ function Homepage() {
                     return (
                         <div className={"col-sm-2"} key={recipe.id}>
                             <div className={"card"}>
-                                <img className={"card-img-top"} src={Baked} alt={"baked"}/>
+                                <a href={"/detail"}><img className={"card-img-top"} src={Baked} alt={"baked"}/></a>
                                 <div className={"card-body"}>
-                                    <h5 className={"card-title"}>{recipe.title}</h5>
+                                    <a href={"/detail"} style={link}><h5 className={"card-title"}>{recipe.title}</h5></a>
                                     <div className="row text-muted">
                                         <div className={"col-sm"}>
                                             {iconMeal} {recipe.meal}<br/>

@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
-import './css/NewRecipe.css';
+import './css/RecipeNew.css';
 import units from "./util/Unit";
 import meals from "./util/Meal";
 import difficulties from "./util/Difficulty";
 import axios from "axios";
 
 
-function NewRecipe() {
+function RecipeNew() {
 
     const {register, handleSubmit, errors} = useForm();
     const ingredient = {id: '', name: ''};
@@ -203,4 +203,4 @@ function NewRecipe() {
     )
 }
 
-export default NewRecipe;
+export default RecipeNew;
