@@ -10,18 +10,14 @@ import axios from "axios";
 function NewRecipe() {
 
     const {register, handleSubmit, errors} = useForm();
-
     const ingredient = {id: '', name: ''};
     const [ingredientId, setIngredientId] = useState(0);
     const [ingredientName, setIngredientName] = useState('');
     const [amount, setAmount] = useState(0);
     const [unit, setUnit] = useState('');
     const [ingredients, setIngredients] = useState([ingredient]);
-    const [ingredientList, setIngredientList] = useState([]);
 
-    const [ingredientError, setIngredientError] = useState('');
-    const [amountError, setAmountError] = useState('');
-    const [unitError, setUnitError] = useState('');
+    const [ingredientList, setIngredientList] = useState([]);
 
     useEffect(() => {
         axios.get("http://localhost:8080/api/ingredients").then(response => {
@@ -30,7 +26,6 @@ function NewRecipe() {
     }, []);
 
     const onSubmit = (data) => {
-
         const recipe = {
             title: data.title,
             meal: data.meal,
@@ -38,14 +33,11 @@ function NewRecipe() {
             steps: data.steps,
             ingredientSet: ingredientList
         };
-        console.log(recipe);
-
         axios.post("http://localhost:8080/api/recipes", recipe)
             .then(response => {
                 console.log(response.data);
             }).catch(error => console.log(error))
             .then(refreshPage);
-
         alert("Your recipe has been saved");
     };
 
@@ -54,6 +46,7 @@ function NewRecipe() {
     };
 
     const handleOnChangeIngredient = (event) => {
+        event.preventDefault();
         const name = event.target.value;
         setIngredientName(name);
         let ingredient = ingredients.find((ingredient) => ingredient.name === name);
@@ -61,15 +54,7 @@ function NewRecipe() {
     };
 
     const handleIngredientList = (event) => {
-        if (ingredientName === "") {
-            setIngredientError("* Ingredients are required");
-        } else setIngredientError(null);
-        if (amount === 0) {
-            setAmountError("* Amount is required");
-        } else setAmountError(null);
-        if (unit === "") {
-            setUnitError("* Unit is required");
-        } else setUnitError(null);
+        event.preventDefault();
 
         const ingredientDetail = {
             'id': ingredientId,
@@ -79,9 +64,21 @@ function NewRecipe() {
         };
 
         if (ingredientId !== 0 && ingredientName !== "" && amount !== 0 && unit !== "") {
-            console.log(ingredientDetail);
-            return setIngredientList(ingredientList => [...ingredientList, ingredientDetail]);
+            if (ingredientList.some(ingredient => ingredient.name === ingredientDetail.name)) {
+                alert("Ingredient already exists!");
+            } else {
+                console.log(ingredientDetail);
+                return setIngredientList(ingredientList => [...ingredientList, ingredientDetail]);
+            }
         }
+    };
+
+    const handleRemoveIngredientItem = (event) => {
+        event.preventDefault();
+        let array = [...ingredientList];
+        let index = array.indexOf(event.target.value);
+        array.splice(index, 1);
+        setIngredientList(array);
     };
 
     return (
@@ -140,7 +137,6 @@ function NewRecipe() {
                 })}
             </select>
             {errors.ingredients && <p>{errors.ingredients.message}</p>}
-            {ingredientError && <p>{ingredientError}</p>}
 
             <div className={"row"}>
                 <div className={"col"}>
@@ -153,7 +149,6 @@ function NewRecipe() {
                                max: {value: 1000000, message: "* Amount is too big"}
                            })}/>
                     {errors.amount && <p>{errors.amount.message}</p>}
-                    {amountError && <p>{amountError}</p>}
                 </div>
                 <div className={"col"}>
                     <label htmlFor={"unit"}>Unit</label>
@@ -169,11 +164,31 @@ function NewRecipe() {
                         })}
                     </select>
                     {errors.unit && <p>{errors.unit.message}</p>}
-                    {unitError && <p>{unitError}</p>}
                 </div>
             </div>
 
-            <input type={"button"} value={"Add Ingredient"} onClick={handleIngredientList}/>
+            <input className={"btn-ingredients"} type={"button"} value={"Add Ingredient"}
+                   onClick={handleIngredientList}/>
+
+            <ul className={"list-group"} ref={register} style={{marginTop: "20px", border: "none"}}>
+                {ingredientList.map((ingredient, index) => {
+                    return (
+                        <li className={"list-group-item"} key={index} style={{border: "none"}}>
+                            <button className={"btn-ingredients-list"}
+                                    style={{
+                                        marginRight: "20px",
+                                        borderRadius: "4px",
+                                        fontFamily: "monospace",
+                                        border: "grey"
+                                    }}
+                                    onClick={handleRemoveIngredientItem}>
+                                Remove
+                            </button>
+                            {ingredient.name} ( {ingredient.amount} {ingredient.unit} )
+                        </li>
+                    )
+                })}
+            </ul>
 
             <label htmlFor={"steps"}>Steps</label>
             <textarea className={"form-control"} name={"steps"} rows={"5"}
