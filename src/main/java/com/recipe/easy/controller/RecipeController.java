@@ -1,6 +1,7 @@
 package com.recipe.easy.controller;
 
 import com.recipe.easy.model.Recipe;
+import com.recipe.easy.model.RecipeIngredient;
 import com.recipe.easy.model.wrapper.RecipeIngredientWrapper;
 import com.recipe.easy.repository.RecipeIngredientRepository;
 import com.recipe.easy.repository.RecipeRepository;
@@ -21,9 +22,13 @@ public class RecipeController {
     @Autowired
     private RecipeRepository recipeRepository;
 
+    @Autowired
+    private RecipeIngredientRepository recipeIngredientRepository;
+
     @GetMapping(path = "/recipes/{recipeId}")
-    public Optional<Recipe> findRecipeById(@PathVariable("recipeId") Long id) {
-        return recipeRepository.findById(id);
+    public @ResponseBody
+    RecipeIngredientWrapper getCompleteRecipeById(@PathVariable("recipeId") Long recipeId) {
+        return recipeIngredientRepository.getCompleteRecipeById(recipeId);
     }
 
     @GetMapping(path = "/recipes")

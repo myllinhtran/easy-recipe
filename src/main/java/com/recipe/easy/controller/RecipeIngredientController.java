@@ -48,10 +48,4 @@ public class RecipeIngredientController {
     public void deleteRecipeIngredient(@PathVariable("id") Long id) {
         recipeIngredientRepository.deleteById(id);
     }
-
-    @GetMapping(path = "/my-recipes/{recipeId}")
-    public @ResponseBody
-    RecipeIngredientWrapper getCompleteRecipeById(@PathVariable("recipeId") Long recipeId) {
-        return recipeIngredientRepository.getCompleteRecipeById(recipeId);
-    }
 }

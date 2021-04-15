@@ -29,7 +29,7 @@ function RecipeDetail() {
 
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/my-recipes/" + recipeId.id)
+        axios.get("http://localhost:8080/api/recipes/" + recipeId.id)
             .then(response => {
                 if (response.data != null) {
                     console.log(response.data);
