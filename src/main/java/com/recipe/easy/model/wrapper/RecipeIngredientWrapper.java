@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.util.List;
 import java.util.Set;
 
 
@@ -25,7 +26,11 @@ public class RecipeIngredientWrapper {
 
     private Set<IngredientWrapper> ingredientSet;
 
-    public RecipeIngredientWrapper(String title, String meal, String difficulty, String steps, Set<IngredientWrapper> ingredientSet) {
+    public RecipeIngredientWrapper() {
+    }
+
+    public RecipeIngredientWrapper(Long id, String title, String meal, String difficulty, String steps, Set<IngredientWrapper> ingredientSet) {
+        this.id = id;
         this.title = title;
         this.meal = meal;
         this.difficulty = difficulty;

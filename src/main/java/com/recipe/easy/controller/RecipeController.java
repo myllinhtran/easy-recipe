@@ -21,12 +21,6 @@ public class RecipeController {
     @Autowired
     private RecipeRepository recipeRepository;
 
-    @Autowired
-    private RecipeIngredientRepository recipeIngredientRepository;
-
-    @Autowired
-    private RecipeService recipeService;
-
     @GetMapping(path = "/recipes/{recipeId}")
     public Optional<Recipe> findRecipeById(@PathVariable("recipeId") Long id) {
         return recipeRepository.findById(id);

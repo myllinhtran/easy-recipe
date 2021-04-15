@@ -1,12 +1,19 @@
 package com.recipe.easy.controller;
 
+import com.recipe.easy.model.Ingredient;
+import com.recipe.easy.model.Recipe;
 import com.recipe.easy.model.RecipeIngredient;
+import com.recipe.easy.model.wrapper.RecipeIngredientWrapper;
 import com.recipe.easy.repository.RecipeIngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 
 @RestController
@@ -22,10 +29,10 @@ public class RecipeIngredientController {
         return recipeIngredientRepository.findAll();
     }
 
-    @GetMapping(path = "/my-recipes/{id}")
+    /*@GetMapping(path = "/my-recipes/{id}")
     public Optional<RecipeIngredient> getCompleteRecipe(@PathVariable("id") Long id) {
         return recipeIngredientRepository.findById(id);
-    }
+    }*/
 
     @PostMapping(path = "/my-recipes")
     public RecipeIngredient createCompleteRecipe(@RequestBody RecipeIngredient recipeIngredient) {
@@ -40,5 +47,11 @@ public class RecipeIngredientController {
     @DeleteMapping(path = "/my-recipes/{id}")
     public void deleteRecipeIngredient(@PathVariable("id") Long id) {
         recipeIngredientRepository.deleteById(id);
+    }
+
+    @GetMapping(path = "/my-recipes/{recipeId}")
+    public @ResponseBody
+    RecipeIngredientWrapper getCompleteRecipeById(@PathVariable("recipeId") Long recipeId) {
+        return recipeIngredientRepository.getCompleteRecipeById(recipeId);
     }
 }

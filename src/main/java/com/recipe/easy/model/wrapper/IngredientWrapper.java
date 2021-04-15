@@ -1,11 +1,16 @@
 package com.recipe.easy.model.wrapper;
 
+import java.util.Objects;
+
 public class IngredientWrapper {
 
     private Long id;
     private String name;
     private Double amount;
     private String unit;
+
+    public IngredientWrapper() {
+    }
 
     public IngredientWrapper(Long id, String name, Double amount, String unit) {
         this.id = id;
@@ -44,6 +49,22 @@ public class IngredientWrapper {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        IngredientWrapper that = ( IngredientWrapper ) o;
+        return Objects.equals(id, that.id) &&
+               Objects.equals(name, that.name) &&
+               Objects.equals(amount, that.amount) &&
+               Objects.equals(unit, that.unit);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, amount, unit);
     }
 
     @Override
