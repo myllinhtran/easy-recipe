@@ -21,45 +21,37 @@ public class JpaRecipeIngredientRepositoryImpl implements JpaRecipeIngredientRep
     private EntityManager entityManager;
 
     @Override
-    @SuppressWarnings("unchecked")
-    public Collection<Ingredient> getAllIngredientsByRecipeId(Long recipeId) {
-        Query query = this.entityManager
-                .createQuery("SELECT ingredient FROM Ingredient ingredient WHERE ingredient.id IN " +
-                             "(SELECT ingredient.id FROM Ingredient ingredient JOIN RecipeIngredient recipeIngredient " +
-                             "ON ingredient.id=recipeIngredient.ingredient.id WHERE recipeIngredient.recipe.id=:recipeId)");
-        query.setParameter("recipeId", recipeId);
-        return query.getResultList();
-    }
-
-    @Override
     public RecipeIngredientWrapper getCompleteRecipeById(Long recipeId) {
         Query query = this.entityManager
                 .createQuery("SELECT recipe " +
-                             "FROM Recipe recipe JOIN RecipeIngredient recipeIngredient ON recipe.id=recipeIngredient.recipe.id " +
+                             "FROM Recipe recipe JOIN RecipeIngredient recipeIngredient " +
+                             "ON recipe.id=recipeIngredient.recipe.id " +
                              "WHERE recipeIngredient.recipe.id=:recipeId");
         query.setParameter("recipeId", recipeId);
 
         Recipe recipe = ( Recipe ) query.getSingleResult();
 
-        RecipeIngredientWrapper recipeWrapper = new RecipeIngredientWrapper();
-        recipeWrapper.setId(recipe.getId());
-        recipeWrapper.setTitle(recipe.getTitle());
-        recipeWrapper.setMeal(recipe.getMeal());
-        recipeWrapper.setDifficulty(recipe.getDifficulty());
-        recipeWrapper.setSteps(recipe.getSteps());
+        RecipeIngredientWrapper newRecipe = new RecipeIngredientWrapper();
+        newRecipe.setId(recipe.getId());
+        newRecipe.setTitle(recipe.getTitle());
+        newRecipe.setMeal(recipe.getMeal());
+        newRecipe.setDifficulty(recipe.getDifficulty());
+        newRecipe.setSteps(recipe.getSteps());
 
         Set<RecipeIngredient> recipeIngredients = recipe.getRecipeIngredients();
         Set<IngredientWrapper> ingredientWrappers = new HashSet<>();
         for (RecipeIngredient recipeIngredient : recipeIngredients) {
             IngredientWrapper ingredientWrapper = new IngredientWrapper();
+
             ingredientWrapper.setId(recipeIngredient.getRecipeIngredientId().getIngredientId());
             ingredientWrapper.setName(recipeIngredient.getIngredient().getName());
             ingredientWrapper.setAmount(recipeIngredient.getAmount());
             ingredientWrapper.setUnit(recipeIngredient.getUnit());
+
             ingredientWrappers.add(ingredientWrapper);
         }
-        recipeWrapper.setIngredientSet(ingredientWrappers);
+        newRecipe.setIngredientSet(ingredientWrappers);
 
-        return recipeWrapper;
+        return newRecipe;
     }
 }

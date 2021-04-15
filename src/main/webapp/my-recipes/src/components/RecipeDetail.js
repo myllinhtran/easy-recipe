@@ -25,7 +25,7 @@ function RecipeDetail() {
     };
     const recipeId = useParams();
     const [recipeState, setRecipeState] = useState(recipe);
-    const [ingredientList, setIngredientList] = useState([]);
+    const [ingredients, setIngredients] = useState([]);
 
 
     useEffect(() => {
@@ -39,14 +39,18 @@ function RecipeDetail() {
                         difficulty: response.data.difficulty,
                         steps: response.data.steps
                     });
-                    setIngredientList(response.data.ingredientSet);
+                    setIngredients(response.data.ingredientSet);
                 }
             });
     }, []);
 
+    const displaySteps = () => {
+        const steps = recipeState.steps;
+        return steps.split('\n').map((str, index) => <p key={index}>{str}</p>);
+    };
 
     return (
-        <div className={"container"} style={{marginTop: "60px", width: "80%"}}>
+        <div className={"container"} style={{marginTop: "60px", marginBottom: "60px", width: "80%"}}>
             <div className={"row"}>
                 <div className={"col-4"}>
                     <img className={"img-fluid"} src={Baked} alt={"..."}/>
@@ -54,7 +58,7 @@ function RecipeDetail() {
                         <br/>
                         <h5>Ingredients</h5>
                         <ul>
-                            {ingredientList.map((ingredient, index) => {
+                            {ingredients.map((ingredient, index) => {
                                 return (
                                     <li key={index}>
                                         {ingredient.name} ({ingredient.amount} {ingredient.unit})
@@ -77,7 +81,7 @@ function RecipeDetail() {
                     <br/>
                     <div className={"col"}>
                         <h5>Steps: </h5>
-                        <p>{recipeState.steps}</p>
+                        {displaySteps()}
                     </div>
                 </div>
             </div>
