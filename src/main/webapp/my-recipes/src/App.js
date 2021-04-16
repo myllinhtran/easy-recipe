@@ -16,8 +16,8 @@ function App() {
             <Switch>
                 <Route path={"/"} exact component={Homepage}/>
                 <Route path={"/new"} exact component={RecipeNew}/>
-                <Route path={"/recipe/update/:id"} exact component={RecipeUpdate}/>
-                <Route path={"/recipe/detail/:id"} exact component={RecipeDetail}/>
+                <Route path={"/update/:id"} exact component={RecipeUpdate}/>
+                <Route path={"/detail/:id"} exact component={RecipeDetail}/>
             </Switch>
         </Router>
     );

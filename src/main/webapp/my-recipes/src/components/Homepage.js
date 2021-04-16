@@ -60,9 +60,9 @@ function Homepage() {
                     return (
                         <div className={"col-sm-2"} key={recipe.id}>
                             <div className={"card"}>
-                                <a href={"/recipe/detail/" + recipe.id}><img className={"card-img-top"} src={Baked} alt={"baked"}/></a>
+                                <a href={"/detail/" + recipe.id}><img className={"card-img-top"} src={Baked} alt={"baked"}/></a>
                                 <div className={"card-body"}>
-                                    <a href={"/recipe/detail/" + recipe.id} style={link}><h5 className={"card-title"}>{recipe.title}</h5></a>
+                                    <a href={"/detail/" + recipe.id} style={link}><h5 className={"card-title"}>{recipe.title}</h5></a>
                                     <div className="row text-muted">
                                         <div className={"col-sm"}>
                                             {iconMeal} {recipe.meal}<br/>

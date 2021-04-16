@@ -26,11 +26,19 @@ label {
 
 button {
     font-family: 'DejaVu Sans Mono', monospace;
-    padding-left: 10px;
 }
 
-button[type="button"],button[type="submit"],
-input[type="button"], input[type="submit"]  {
+.btn-ingredients-list {
+    background: lightgrey;
+    color: #343A40;
+    margin-right: 20px;
+    border-radius: 4px;
+    font-family: monospace;
+    border: grey;
+}
+
+button[type="button"],button[type="submit"], button[type="reset"]
+input[type="button"], input[type="submit"], input[type="reset"]{
     background: #343A40;
     color: white;
     text-transform: uppercase;
@@ -41,15 +49,6 @@ input[type="button"], input[type="submit"]  {
     font-weight: 300;
     max-width: max-content;
     font-family: 'DejaVu Sans Mono', monospace;
-}
-
-.btn-ingredients-list {
-    background: lightgrey;
-    color: #343A40;
-    margin-right: 20px;
-    border-radius: 4px;
-    font-family: monospace;
-    border: grey;
 }
 
 .input-group {

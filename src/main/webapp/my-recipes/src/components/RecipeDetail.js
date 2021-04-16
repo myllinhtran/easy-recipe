@@ -1,16 +1,11 @@
 import React, {useEffect, useState} from "react";
 import Baked from "./img/lm4rceme60edquisbnwb.jpeg";
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import './css/RecipeDetail.css';
 import axios from "axios";
-import {faMinusCircle, faPlusCircle} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 function RecipeDetail() {
-
-    const iconEdit = <FontAwesomeIcon icon={faPlusCircle}/>;
-    const iconDelete = <FontAwesomeIcon icon={faMinusCircle}/>;
 
     const recipeIngredient = {
         recipeIngredientId: {
@@ -31,6 +26,8 @@ function RecipeDetail() {
     const recipeId = useParams();
     const [recipeState, setRecipeState] = useState(recipe);
     const [ingredients, setIngredients] = useState([]);
+
+    const history = useHistory();
 
     useEffect(() => {
         axios.get("http://localhost:8080/api/recipes/" + recipeId.id)
@@ -53,11 +50,19 @@ function RecipeDetail() {
         return steps.split('\n').map((str, index) => <p key={index} className={"steps"}>{str}</p>);
     };
 
-
     const handleEdit = (event) => {
         event.preventDefault();
-        alert("Button is clicked!");
+        history.push("/update/" + recipeId.id);
+    };
 
+    const handleDelete = (event) => {
+        event.preventDefault();
+
+        axios.delete("http://localhost:8080/api/recipes/" + recipeId.id)
+            .then(response => console.log(response.data))
+            .then(history.push("/"))
+            .catch(error => console.log(error));
+        window.location.reload();
     };
 
 
@@ -96,11 +101,11 @@ function RecipeDetail() {
                         {displaySteps()}
                     </div>
                     <div className={"row justify-content-start"}>
-                        <div className={"col-1"}>
+                        <div className={"col-2"}>
                             <button onClick={handleEdit}>Edit</button>
                         </div>
-                        <div className={"col-2"}>
-                            <button>Delete</button>
+                        <div className={"col-3"}>
+                            <button onClick={handleDelete}>Delete</button>
                         </div>
                     </div>
                 </div>

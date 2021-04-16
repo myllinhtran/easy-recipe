@@ -167,24 +167,22 @@ function RecipeNew() {
                 </div>
             </div>
 
-            <input className={"btn-ingredients"} type={"button"} value={"Add Ingredient"}
-                   onClick={handleIngredientList}/>
+            <input className={"btn-ingredients"} type={"button"} value={"Add"} onClick={handleIngredientList}/>
 
             <ul className={"list-group"} ref={register} style={{marginTop: "20px", border: "none"}}>
                 {ingredientList.map((ingredient, index) => {
                     return (
                         <li className={"list-group-item"} key={index} style={{border: "none"}}>
-                            <button className={"btn-ingredients-list"}
-                                    style={{
-                                        marginRight: "20px",
-                                        borderRadius: "4px",
-                                        fontFamily: "monospace",
-                                        border: "grey"
-                                    }}
-                                    onClick={handleRemoveIngredientItem}>
-                                Remove
-                            </button>
-                            {ingredient.name} ( {ingredient.amount} {ingredient.unit} )
+                            <div className={"row"}>
+                                <div className={"col"}>
+                                    {ingredient.name} ( {ingredient.amount} {ingredient.unit} )
+                                </div>
+                                <div className={"col"}>
+                                    <button className={"btn-ingredients-list"} onClick={handleRemoveIngredientItem}>
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
                         </li>
                     )
                 })}
