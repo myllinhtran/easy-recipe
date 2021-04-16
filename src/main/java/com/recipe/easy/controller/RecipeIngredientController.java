@@ -29,10 +29,10 @@ public class RecipeIngredientController {
         return recipeIngredientRepository.findAll();
     }
 
-    /*@GetMapping(path = "/my-recipes/{id}")
+    @GetMapping(path = "/my-recipes/{id}")
     public Optional<RecipeIngredient> getCompleteRecipe(@PathVariable("id") Long id) {
         return recipeIngredientRepository.findById(id);
-    }*/
+    }
 
     @PostMapping(path = "/my-recipes")
     public RecipeIngredient createCompleteRecipe(@RequestBody RecipeIngredient recipeIngredient) {
