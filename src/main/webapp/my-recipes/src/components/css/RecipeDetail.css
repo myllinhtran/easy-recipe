@@ -10,8 +10,20 @@ h3 {
     font-family: 'DejaVu Sans Mono', monospace;
 }
 
-p {
+.steps {
     font-family: 'DejaVu Sans Mono', monospace;
     color: black;
     font-size: 16px;
+}
+
+button {
+    background: #343A40;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: 300;
+    max-width: max-content;
+    font-family: 'DejaVu Sans Mono', monospace;
 }

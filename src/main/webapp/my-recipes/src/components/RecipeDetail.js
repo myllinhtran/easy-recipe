@@ -3,9 +3,14 @@ import Baked from "./img/lm4rceme60edquisbnwb.jpeg";
 import {useParams} from "react-router-dom";
 import './css/RecipeDetail.css';
 import axios from "axios";
+import {faMinusCircle, faPlusCircle} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 function RecipeDetail() {
+
+    const iconEdit = <FontAwesomeIcon icon={faPlusCircle}/>;
+    const iconDelete = <FontAwesomeIcon icon={faMinusCircle}/>;
 
     const recipeIngredient = {
         recipeIngredientId: {
@@ -27,7 +32,6 @@ function RecipeDetail() {
     const [recipeState, setRecipeState] = useState(recipe);
     const [ingredients, setIngredients] = useState([]);
 
-
     useEffect(() => {
         axios.get("http://localhost:8080/api/recipes/" + recipeId.id)
             .then(response => {
@@ -41,13 +45,21 @@ function RecipeDetail() {
                     });
                     setIngredients(response.data.ingredientSet);
                 }
-            });
+            }).catch(error => console.log(error));
     }, []);
 
     const displaySteps = () => {
         const steps = recipeState.steps;
-        return steps.split('\n').map((str, index) => <p key={index}>{str}</p>);
+        return steps.split('\n').map((str, index) => <p key={index} className={"steps"}>{str}</p>);
     };
+
+
+    const handleEdit = (event) => {
+        event.preventDefault();
+        alert("Button is clicked!");
+
+    };
+
 
     return (
         <div className={"container"} style={{marginTop: "60px", marginBottom: "60px", width: "80%"}}>
@@ -82,6 +94,14 @@ function RecipeDetail() {
                     <div className={"col"}>
                         <h5>Steps: </h5>
                         {displaySteps()}
+                    </div>
+                    <div className={"row justify-content-start"}>
+                        <div className={"col-1"}>
+                            <button onClick={handleEdit}>Edit</button>
+                        </div>
+                        <div className={"col-2"}>
+                            <button>Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>

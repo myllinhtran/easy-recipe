@@ -1,5 +1,5 @@
 .form-recipe {
-    margin: 5% 25% 10%;
+    margin: 3% 25% 10%;
 }
 
 .form-select {
@@ -29,22 +29,8 @@ button {
     padding-left: 10px;
 }
 
-button[type="submit"],
-input[type="submit"] {
-    background: #343A40;
-    color: white;
-    text-transform: uppercase;
-    border: none;
-    margin-top: 30px;
-    padding: 20px;
-    font-size: 16px;
-    font-weight: 300;
-    max-width: max-content;
-    font-family: 'DejaVu Sans Mono', monospace;
-}
-
-button[type="button"],
-input[type="button"] {
+button[type="button"],button[type="submit"],
+input[type="button"], input[type="submit"]  {
     background: #343A40;
     color: white;
     text-transform: uppercase;
@@ -53,7 +39,7 @@ input[type="button"] {
     padding: 10px;
     font-size: 16px;
     font-weight: 300;
-    max-width: max-content;
+    max-width: 170px;
     font-family: 'DejaVu Sans Mono', monospace;
 }
 

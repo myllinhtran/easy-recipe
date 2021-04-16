@@ -45,9 +45,7 @@ function Homepage() {
             <div className={"nav-bar"}>
                 <div className="card text-center">
                     <div className="card-body">
-                        <h2 className="card-title">Find your recipes</h2>
                         <a href="new" className="btn btn-primary">New Recipe</a>
-                        <a href="my-recipes" className="btn btn-primary">My Recipes</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +53,7 @@ function Homepage() {
     }
 
     return (
-        <div className={"container-fluid"}>
+        <div className={"container-fluid"} style={{marginBottom: "60px"}}>
             {displayNavBar()}
             <div className={"row"}>
                 {recipes.map(recipe => {

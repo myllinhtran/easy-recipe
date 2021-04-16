@@ -20,9 +20,9 @@ function RecipeNew() {
     const [ingredientList, setIngredientList] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/ingredients").then(response => {
-            setIngredients(response.data)
-        });
+        axios.get("http://localhost:8080/api/ingredients")
+            .then(response => {setIngredients(response.data)})
+            .catch(error => console.log(error));
     }, []);
 
     const onSubmit = (data) => {
