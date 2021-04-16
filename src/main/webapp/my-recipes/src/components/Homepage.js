@@ -58,7 +58,7 @@ function Homepage() {
             <div className={"row"}>
                 {recipes.map(recipe => {
                     return (
-                        <div className={"col-sm-2"} key={recipe.id}>
+                        <div className={"col-sm-3"} key={recipe.id}>
                             <div className={"card"}>
                                 <a href={"/detail/" + recipe.id}><img className={"card-img-top"} src={Baked} alt={"baked"}/></a>
                                 <div className={"card-body"}>

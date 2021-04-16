@@ -58,8 +58,9 @@ input[type="button"], input[type="submit"], input[type="reset"]{
 }
 
 p {
+    margin-top: 15px;
     font-size: 14px;
     font-weight: 200;
     color: red;
-    font-family: 'DejaVu Sans Mono', monospace;
+    font-family: monospace;
 }
