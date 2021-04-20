@@ -1,6 +1,5 @@
 package com.recipe.easy.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
@@ -17,7 +16,7 @@ public class Ingredient {
     private Long id;
 
     @NotNull
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @OneToMany(mappedBy = "ingredient")

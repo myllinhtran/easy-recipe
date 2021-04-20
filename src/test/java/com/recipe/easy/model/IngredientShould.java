@@ -23,10 +23,10 @@ class IngredientShould {
     @BeforeEach
     void setUp() {
         recipe.setId(( long ) 01);
-        recipe.setTitle("Test");
-        recipe.setMeal("Test");
-        recipe.setDifficulty("Test");
-        recipe.setSteps("Test");
+        recipe.setTitle("title");
+        recipe.setMeal("meal");
+        recipe.setDifficulty("difficulty");
+        recipe.setSteps("steps");
 
         ingredient.setId(( long ) 01);
         ingredient.setName("banana");
@@ -34,7 +34,7 @@ class IngredientShould {
         recipeIngredient.setRecipe(recipe);
         recipeIngredient.setIngredient(ingredient);
         recipeIngredient.setAmount(0.0);
-        recipeIngredient.setUnit("Test");
+        recipeIngredient.setUnit("unit");
 
         recipeIngredients.add(recipeIngredient);
 
