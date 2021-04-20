@@ -1,8 +1,8 @@
-# Easy Recipes
+# :stew: Easy Recipes
 
 ## Description
 Easy Recipes is a simple application for creating and saving new cooking recipes.
-* Can create new recipes
+* Can create new recipes 
 * Can edit current recipes
 * Can delete current recipes
 * Can see the list of current recipes
