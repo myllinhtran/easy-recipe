@@ -58,7 +58,6 @@ function RecipeDetail() {
 
     const handleDelete = (event) => {
         event.preventDefault();
-
         axios.delete("http://localhost:8080/api/recipes/" + recipeId.id)
             .then(response => console.log(response.data))
             .then(history.push("/"))

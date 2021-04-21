@@ -7,4 +7,5 @@ import com.recipe.easy.model.wrapper.RecipeIngredientWrapper;
 public interface JpaRecipeRepository {
 
     Recipe saveNewRecipe(RecipeIngredientWrapper newRecipe);
+    Recipe editCurrentRecipe(RecipeIngredientWrapper currentRecipe, Long recipeId);
 }

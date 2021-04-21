@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 import './css/RecipeUpdate.css';
 import units from "./util/Unit";
 import meals from "./util/Meal";
@@ -30,7 +30,7 @@ function RecipeUpdate() {
     const [ingredientList, setIngredientList] = useState([]);
 
     const {register, handleSubmit, errors} = useForm();
-
+    const history = useHistory();
 
     useEffect(() => {
         axios.get("http://localhost:8080/api/recipes/" + recipeId.id)
@@ -61,16 +61,11 @@ function RecipeUpdate() {
             steps: data.steps,
             ingredientSet: ingredientList
         };
-        axios.put("http://localhost:8080/api/recipes", recipe)
+        axios.put("http://localhost:8080/api/recipes/" + recipeId.id, recipe)
             .then(response => {
                 console.log(response.data);
-            }).catch(error => console.log(error))
-            .then(refreshPage);
-        alert("Your recipe has been updated");
-    };
-
-    const refreshPage = () => {
-        window.location.reload();
+            }).catch(error => console.log(error));
+        // alert("Your recipe has been updated");
     };
 
     const handleOnChangeIngredient = (event) => {

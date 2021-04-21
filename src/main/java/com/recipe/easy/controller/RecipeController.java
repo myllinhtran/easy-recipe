@@ -7,6 +7,7 @@ import com.recipe.easy.repository.RecipeIngredientRepository;
 import com.recipe.easy.repository.RecipeRepository;
 import com.recipe.easy.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.MessageFormat;
@@ -42,9 +43,10 @@ public class RecipeController {
         return recipeRepository.saveNewRecipe(newRecipe);
     }
 
-    @PutMapping(path = "/recipes")
-    public Recipe editRecipe(@RequestBody Recipe recipe) {
-        return recipeRepository.save(recipe);
+    @PutMapping(path = "/recipes/{recipeId}")
+    @ResponseBody
+    public Recipe editRecipe(@RequestBody RecipeIngredientWrapper currentRecipe, @PathVariable Long recipeId) {
+        return recipeRepository.editCurrentRecipe(currentRecipe, recipeId);
     }
 
     @DeleteMapping(path = "/recipes/{recipeId}")
