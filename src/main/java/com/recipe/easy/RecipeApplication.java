@@ -33,15 +33,15 @@ public class RecipeApplication {
         SpringApplication.run(RecipeApplication.class, args);
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/").allowedOrigins("https://evening-scrubland-35769.herokuapp.com/");
-            }
-        };
-    }
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/").allowedOrigins("https://evening-scrubland-35769.herokuapp.com/");
+//            }
+//        };
+//    }
 
     // Uncomment this line to test
     // @Bean

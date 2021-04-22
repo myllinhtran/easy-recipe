@@ -14,7 +14,7 @@ import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Optional;
 
-@CrossOrigin(origins = "https://evening-scrubland-35769.herokuapp.com")
+@CrossOrigin(origins = "https://evening-scrubland-35769.herokuapp.com", maxAge = 3600)
 @RestController
 @RequestMapping(path = "/api")
 public class RecipeController {
