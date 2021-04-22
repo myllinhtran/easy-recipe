@@ -10,7 +10,7 @@ import java.util.Optional;
 
 
 @RestController
-    @CrossOrigin(origins = "https://evening-scrubland-35769.herokuapp.com:3000/")
+@CrossOrigin(origins = "https://evening-scrubland-35769.herokuapp.com", maxAge = 3600)
 @RequestMapping(path = "/api")
 public class RecipeIngredientController {
 
