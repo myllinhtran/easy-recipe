@@ -10,13 +10,13 @@ import java.util.Collection;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "https://evening-scrubland-35769.herokuapp.com/")
 @RequestMapping(path = "/api")
 public class IngredientController {
 
     @Autowired
     private IngredientRepository ingredientRepository;
 
+    @CrossOrigin(origins = "https://evening-scrubland-35769.herokuapp.com/")
     @GetMapping(path = "/ingredients")
     public Collection<Ingredient> getAllIngredients() {
         return ingredientRepository.findAll();
