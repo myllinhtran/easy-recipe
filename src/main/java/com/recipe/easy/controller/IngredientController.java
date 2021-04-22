@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://evening-scrubland-35769.herokuapp.com/")
 @RequestMapping(path = "/api")
 public class IngredientController {
 

@@ -33,7 +33,7 @@ function Homepage() {
     }, []);
 
     function getAllRecipes() {
-        axios.get("http://localhost:8080/api/recipes")
+        axios.get("https://infinite-caverns-36724.herokuapp.com/api/recipes")
             .then(response => {
                 setRecipes(response.data); // update a new state
                 console.log(response.data);

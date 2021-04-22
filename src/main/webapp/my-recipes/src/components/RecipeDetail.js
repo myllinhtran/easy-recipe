@@ -31,7 +31,7 @@ function RecipeDetail() {
 
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/recipes/" + recipeId.id)
+        axios.get("https://infinite-caverns-36724.herokuapp.com/api/recipes/" + recipeId.id)
             .then(response => {
                 if (response.data != null) {
                     console.log(response.data);
@@ -58,7 +58,7 @@ function RecipeDetail() {
 
     const handleDelete = (event) => {
         event.preventDefault();
-        axios.delete("http://localhost:8080/api/recipes/" + recipeId.id)
+        axios.delete("https://infinite-caverns-36724.herokuapp.com/api/recipes/" + recipeId.id)
             .then(response => console.log(response.data))
             .then(history.push("/"))
             .catch(error => console.log(error));

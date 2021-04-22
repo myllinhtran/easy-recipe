@@ -20,7 +20,7 @@ function RecipeNew() {
     const [ingredientList, setIngredientList] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/ingredients")
+        axios.get("https://infinite-caverns-36724.herokuapp.com/api/ingredients")
             .then(response => {setIngredients(response.data)})
             .catch(error => console.log(error));
     }, []);
@@ -33,7 +33,7 @@ function RecipeNew() {
             steps: data.steps,
             ingredientSet: ingredientList
         };
-        axios.post("http://localhost:8080/api/recipes", recipe)
+        axios.post("https://infinite-caverns-36724.herokuapp.com/api/recipes", recipe)
             .then(response => {
                 console.log(response.data);
             }).catch(error => console.log(error))

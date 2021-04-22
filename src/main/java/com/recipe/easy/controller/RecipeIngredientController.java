@@ -1,23 +1,16 @@
 package com.recipe.easy.controller;
 
-import com.recipe.easy.model.Ingredient;
-import com.recipe.easy.model.Recipe;
 import com.recipe.easy.model.RecipeIngredient;
-import com.recipe.easy.model.wrapper.RecipeIngredientWrapper;
 import com.recipe.easy.repository.RecipeIngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://evening-scrubland-35769.herokuapp.com/")
 @RequestMapping(path = "/api")
 public class RecipeIngredientController {
 
