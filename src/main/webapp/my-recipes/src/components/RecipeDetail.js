@@ -58,10 +58,16 @@ function RecipeDetail() {
 
     const handleDelete = (event) => {
         event.preventDefault();
-        axios.delete("https://infinite-caverns-36724.herokuapp.com/api/recipes/" + recipeId.id)
-            .then(response => console.log(response.data))
-            .then(history.push("/"))
-            .catch(error => console.log(error));
+
+        if (window.confirm("Do you wish to delete this recipe?")) {
+            axios.delete("https://infinite-caverns-36724.herokuapp.com/api/recipes/" + recipeId.id)
+                .then(response => {
+                    console.log(response.data);
+                })
+                .then(history.push("/"))
+                .catch(error => console.log(error));
+        }
+
         window.location.reload();
     };
 
