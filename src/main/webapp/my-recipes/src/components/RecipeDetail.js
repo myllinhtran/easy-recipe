@@ -67,7 +67,6 @@ function RecipeDetail() {
                 .then(history.push("/"))
                 .catch(error => console.log(error));
         }
-
         window.location.reload();
     };
 
