@@ -64,3 +64,14 @@ p {
     color: red;
     font-family: monospace;
 }
+
+.btn-add-ingredient {
+    background: lightgrey;
+    margin-right: 20px;
+    border-radius: 4px;
+    font-family: monospace;
+    border: grey;
+    margin-top: 30px;
+    padding: 10px 20px;
+    color: #343A40;
+}

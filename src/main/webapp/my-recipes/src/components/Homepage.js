@@ -45,7 +45,7 @@ function Homepage() {
             <div className={"nav-bar"}>
                 <div className="card text-center">
                     <div className="card-body">
-                        <a href="new" className="btn btn-primary">New Recipe</a>
+                        <a href="/recipe/new" className="btn btn-primary">New Recipe</a>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@ function Homepage() {
                     return (
                         <div className={"col-sm-3"} key={recipe.id}>
                             <div className={"card"}>
-                                <a href={"/detail/" + recipe.id}><img className={"card-img-top"} src={Baked} alt={"baked"}/></a>
+                                <a href={"/recipe/detail/" + recipe.id}><img className={"card-img-top"} src={Baked} alt={"baked"}/></a>
                                 <div className={"card-body"}>
                                     <a href={"/detail/" + recipe.id} style={link}><h5 className={"card-title"}>{recipe.title}</h5></a>
                                     <div className="row text-muted">

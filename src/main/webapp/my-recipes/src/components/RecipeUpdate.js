@@ -150,10 +150,7 @@ function RecipeUpdate() {
             <label htmlFor={"ingredients"}>Ingredients</label>
             <select className={"form-select"} name={"ingredients"} defaultValue={"Select..."}
                     onChange={handleOnChangeIngredient}
-                    ref={register({
-                        required: true,
-                        pattern: {value: /^(?!Select)/, message: "* Ingredients is required"}
-                    })}>
+                    ref={register}>
                 <option value={"Select..."} disabled>Select...</option>
                 {ingredients.map(ingredient => {
                     return (<option key={ingredient.id} value={ingredient.name}>{ingredient.name}</option>)
@@ -166,21 +163,14 @@ function RecipeUpdate() {
                     <label htmlFor={"amount"}>Amount</label>
                     <input className={"form-control"} name={"amount"} type={"number"}
                            onChange={e => setAmount(e.target.value)}
-                           ref={register({
-                               required: {value: true, message: "* Amount is required"},
-                               min: {value: 0, message: "* Amount must not be zero"},
-                               max: {value: 1000000, message: "* Amount is too big"}
-                           })}/>
+                           ref={register}/>
                     {errors.amount && <p>{errors.amount.message}</p>}
                 </div>
                 <div className={"col"}>
                     <label htmlFor={"unit"}>Unit</label>
                     <select className={"form-select"} name={"unit"} defaultValue={"Select..."}
                             onChange={e => setUnit(e.target.value)}
-                            ref={register({
-                                required: true,
-                                pattern: {value: /^(?!Select)/, message: "* Unit is required"}
-                            })}>
+                            ref={register}>
                         <option value={"Select..."} disabled>Select...</option>
                         {units.map((unit, index) => {
                             return (<option key={index}>{unit}</option>)
@@ -190,7 +180,7 @@ function RecipeUpdate() {
                 </div>
             </div>
 
-            <input className={"btn-ingredients"} type={"button"} value={"Add"} style={{marginTop: "10px"}}
+            <input className={"btn-add-ingredient"} type={"button"} value={"Add"} style={{marginTop: "10px"}}
                    onClick={handleIngredientList}/>
 
             <ul className={"list-group"} ref={register} style={{marginTop: "20px", border: "none"}}>

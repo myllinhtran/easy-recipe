@@ -31,25 +31,41 @@ button {
 
 button[type="button"],button[type="submit"],
 input[type="button"], input[type="submit"]  {
-    background: #343A40;
-    color: white;
-    text-transform: uppercase;
     border: none;
-    margin-top: 30px;
-    padding: 10px 20px;
     font-size: 16px;
     font-weight: 300;
     max-width: max-content;
     font-family: 'DejaVu Sans Mono', monospace;
 }
 
-.btn-ingredients-list {
+.btn-remove-ingredient {
     background: lightgrey;
-    color: #343A40;
     margin-right: 20px;
     border-radius: 4px;
     font-family: monospace;
     border: grey;
+    color: #343A40;
+}
+
+.btn-new-ingredient {
+    background: lightgrey;
+    border-radius: 4px;
+    font-family: monospace;
+    border: grey;
+    margin-top: 45px;
+    padding: 7px 20px;
+    color: #343A40;
+}
+
+.btn-add-ingredient {
+    background: lightgrey;
+    margin-right: 20px;
+    border-radius: 4px;
+    font-family: monospace;
+    border: grey;
+    margin-top: 30px;
+    padding: 10px 20px;
+    color: #343A40;
 }
 
 .input-group {

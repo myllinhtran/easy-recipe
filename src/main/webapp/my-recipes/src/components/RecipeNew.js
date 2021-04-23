@@ -81,6 +81,13 @@ function RecipeNew() {
         setIngredientList(array);
     };
 
+    const handleNewIngredient = (event) => {
+        event.preventDefault();
+
+        let windowFeatures = "width=600,height=400,left=200,top=200";
+        window.open("/ingredient/new", "", windowFeatures);
+    };
+
     return (
         <form className={"form-recipe"} onSubmit={handleSubmit(onSubmit)}>
 
@@ -124,19 +131,26 @@ function RecipeNew() {
                 </div>
             </div>
 
-            <label htmlFor={"ingredients"}>Ingredients</label>
-            <select className={"form-select"} name={"ingredients"} defaultValue={"Select..."}
-                    onChange={handleOnChangeIngredient}
-                    ref={register({
-                        required: true,
-                        pattern: {value: /^(?!Select)/, message: "* Ingredients is required"}
-                    })}>
-                <option value={"Select..."} disabled>Select...</option>
-                {ingredients.map(ingredient => {
-                    return (<option key={ingredient.id} value={ingredient.name}>{ingredient.name}</option>)
-                })}
-            </select>
-            {errors.ingredients && <p>{errors.ingredients.message}</p>}
+            <div className={"row"}>
+                <div className={"col-sm-9"}>
+                    <label htmlFor={"ingredients"}>Ingredients</label>
+                    <select className={"form-select"} name={"ingredients"} defaultValue={"Select..."}
+                            onChange={handleOnChangeIngredient}
+                            ref={register({
+                                required: true,
+                                pattern: {value: /^(?!Select)/, message: "* Ingredients is required"}
+                            })}>
+                        <option value={"Select..."} disabled>Select...</option>
+                        {ingredients.map(ingredient => {
+                            return (<option key={ingredient.id} value={ingredient.name}>{ingredient.name}</option>)
+                        })}
+                    </select>
+                    {errors.ingredients && <p>{errors.ingredients.message}</p>}
+                </div>
+                <div className={"col-sm"}>
+                    <input className={"btn-new-ingredient"} type={"button"} value={"New"} onClick={handleNewIngredient}/>
+                </div>
+            </div>
 
             <div className={"row"}>
                 <div className={"col"}>
@@ -167,7 +181,7 @@ function RecipeNew() {
                 </div>
             </div>
 
-            <input className={"btn-ingredients"} type={"button"} value={"Add"} onClick={handleIngredientList}/>
+            <input className={"btn-add-ingredient"} type={"button"} value={"Add"} onClick={handleIngredientList}/>
 
             <ul className={"list-group"} ref={register} style={{marginTop: "20px", border: "none"}}>
                 {ingredientList.map((ingredient, index) => {
@@ -178,9 +192,7 @@ function RecipeNew() {
                                     {ingredient.name} ( {ingredient.amount} {ingredient.unit} )
                                 </div>
                                 <div className={"col"}>
-                                    <button className={"btn-ingredients-list"} onClick={handleRemoveIngredientItem}>
-                                        Remove
-                                    </button>
+                                    <button className={"btn-remove-ingredient"} onClick={handleRemoveIngredientItem}>Remove</button>
                                 </div>
                             </div>
                         </li>

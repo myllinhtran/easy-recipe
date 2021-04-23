@@ -53,7 +53,7 @@ function RecipeDetail() {
 
     const handleEdit = (event) => {
         event.preventDefault();
-        history.push("/update/" + recipeId.id);
+        history.push("/recipe/update/" + recipeId.id);
     };
 
     const handleDelete = (event) => {

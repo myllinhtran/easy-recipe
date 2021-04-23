@@ -51,29 +51,6 @@ public class JpaRecipeRepositoryImpl implements JpaRecipeRepository {
     public Recipe editCurrentRecipe(RecipeIngredientWrapper newRecipe, Long recipeId) {
         Recipe previousRecipe = entityManager.find(Recipe.class, recipeId);
         entityManager.remove(previousRecipe);
-
-        Recipe recipe = new Recipe();
-        recipe.setId(recipeId);
-        recipe.setTitle(newRecipe.getTitle());
-        recipe.setMeal(newRecipe.getMeal());
-        recipe.setDifficulty(newRecipe.getDifficulty());
-        recipe.setSteps(newRecipe.getSteps());
-
-        entityManager.persist(recipe);
-
-        for (IngredientWrapper ingredient : newRecipe.getIngredientSet()) {
-            RecipeIngredient recipeIngredient = new RecipeIngredient();
-            recipeIngredient.setAmount(ingredient.getAmount());
-            recipeIngredient.setUnit(ingredient.getUnit());
-            recipeIngredient.setRecipe(recipe);
-
-            Ingredient newIngredient = new Ingredient();
-            newIngredient.setId(ingredient.getId());
-            newIngredient.setName(ingredient.getName());
-            recipeIngredient.setIngredient(newIngredient);
-
-            entityManager.merge(recipeIngredient);
-        }
-        return recipe;
+        return null;
     }
 }

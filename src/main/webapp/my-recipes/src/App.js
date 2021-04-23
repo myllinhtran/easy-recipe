@@ -7,6 +7,7 @@ import NavigationBar from './components/NavigationBar';
 import RecipeNew from './components/RecipeNew';
 import RecipeDetail from "./components/RecipeDetail";
 import RecipeUpdate from "./components/RecipeUpdate";
+import IngredientNew from "./components/IngredientNew";
 
 function App() {
 
@@ -15,9 +16,10 @@ function App() {
             <NavigationBar/>
             <Switch>
                 <Route path={"/"} exact component={Homepage}/>
-                <Route path={"/new"} exact component={RecipeNew}/>
-                <Route path={"/update/:id"} exact component={RecipeUpdate}/>
-                <Route path={"/detail/:id"} exact component={RecipeDetail}/>
+                <Route path={"/recipe/new"} exact component={RecipeNew}/>
+                <Route path={"/recipe/update/:id"} exact component={RecipeUpdate}/>
+                <Route path={"/recipe/detail/:id"} exact component={RecipeDetail}/>
+                <Route path={"/ingredient/new"} exact component={IngredientNew}/>
             </Switch>
         </Router>
     );
