@@ -42,7 +42,7 @@ public class RecipeController {
         return recipeRepository.saveNewRecipe(newRecipe);
     }
 
-    @PutMapping(path = "/recipes/{recipeId}")
+    @PostMapping(path = "/recipes/{recipeId}")
     @ResponseBody
     public Recipe editRecipe(@RequestBody RecipeIngredientWrapper currentRecipe, @PathVariable Long recipeId) {
         return recipeRepository.editCurrentRecipe(currentRecipe, recipeId);

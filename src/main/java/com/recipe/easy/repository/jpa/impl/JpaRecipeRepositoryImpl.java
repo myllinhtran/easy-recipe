@@ -60,6 +60,20 @@ public class JpaRecipeRepositoryImpl implements JpaRecipeRepository {
         recipe.setSteps(newRecipe.getSteps());
 
         entityManager.persist(recipe);
+
+        for (IngredientWrapper ingredient : newRecipe.getIngredientSet()) {
+            RecipeIngredient recipeIngredient = new RecipeIngredient();
+            recipeIngredient.setAmount(ingredient.getAmount());
+            recipeIngredient.setUnit(ingredient.getUnit());
+            recipeIngredient.setRecipe(recipe);
+
+            Ingredient newIngredient = new Ingredient();
+            newIngredient.setId(ingredient.getId());
+            newIngredient.setName(ingredient.getName());
+            recipeIngredient.setIngredient(newIngredient);
+
+            entityManager.merge(recipeIngredient);
+        }
         return recipe;
     }
 }
