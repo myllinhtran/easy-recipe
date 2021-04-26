@@ -1,5 +1,8 @@
 # :stew: Easy Recipes
 
+## Application
+Easy Recipes can be accessed [here.](https://evening-scrubland-35769.herokuapp.com/)
+
 ## Description
 Easy Recipes is a simple application for creating and saving new cooking recipes.
 * Can create new recipes 
