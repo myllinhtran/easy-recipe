@@ -61,7 +61,7 @@ function RecipeUpdate() {
             steps: data.steps,
             ingredientSet: ingredientList
         };
-        axios.put("https://infinite-caverns-36724.herokuapp.com/api/recipes/" + recipeId.id, recipe)
+        axios.post("https://infinite-caverns-36724.herokuapp.com/api/recipes/" + recipeId.id, recipe)
             .then(response => {
                 console.log(response.data);
             }).catch(error => console.log(error));

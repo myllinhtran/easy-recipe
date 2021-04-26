@@ -53,7 +53,7 @@ public class JpaRecipeRepositoryImpl implements JpaRecipeRepository {
         entityManager.remove(previousRecipe);
 
         Recipe recipe = new Recipe();
-        recipe.setId(recipeId);
+        recipe.setId(newRecipe.getId());
         recipe.setTitle(newRecipe.getTitle());
         recipe.setMeal(newRecipe.getMeal());
         recipe.setDifficulty(newRecipe.getDifficulty());
