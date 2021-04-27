@@ -18,6 +18,7 @@ Easy Recipes is a simple application for creating and saving new cooking recipes
 * Hibernate 5.4.28
 * PostgreSQL 13.1
 * React 17.0.1
+* Heroku 7.52.0
 
 
 ### Installation

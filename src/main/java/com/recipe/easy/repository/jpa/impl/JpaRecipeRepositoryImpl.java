@@ -49,8 +49,7 @@ public class JpaRecipeRepositoryImpl implements JpaRecipeRepository {
     @Override
     @Transactional
     public Recipe editCurrentRecipe(RecipeIngredientWrapper newRecipe, Long recipeId) {
-        Recipe previousRecipe = entityManager.find(Recipe.class, recipeId);
-        entityManager.remove(previousRecipe);
+
         return null;
     }
 }
